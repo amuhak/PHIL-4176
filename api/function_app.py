@@ -7,4 +7,9 @@ app = func.FunctionApp()
 @app.route(route="req")
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-    return func.HttpResponse("Hello, bill!", status_code=200)
+    response_data = {"message": "Hello, bill!"}
+    return func.HttpResponse(
+        body=json.dumps(response_data),
+        status_code=200,
+        mimetype="application/json"
+    )
