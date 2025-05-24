@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "npx webpack --mode production",
     "publish": "copy .\\robots.txt .\\dist\\robots.txt && npx webpack && git add . && git commit -m 'update' && git push"
