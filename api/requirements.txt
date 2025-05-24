@@ -1,2 +1,2 @@
 azure-functions
-# google-genai
+google-genai
