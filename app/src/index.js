@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('send-button');
 
-    // IMPORTANT: Replace with your actual FULL Azure Function URL (including the code parameter)
-    const AZURE_FUNCTION_URL = "YOUR_AZURE_FUNCTION_URL_HERE"; // e.g., https://mychatfuncapp.azurewebsites.net/api/ChatFunction?code=YOUR_FUNCTION_KEY
+    const AZURE_FUNCTION_URL = "/api/req"; // e.g., https://mychatfuncapp.azurewebsites.net/api/ChatFunction?code=YOUR_FUNCTION_KEY
 
     function addMessage(message, sender) {
         const messageDiv = document.createElement('div');
