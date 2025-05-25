@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'api'  # Corrected: Relative path to your function app code
-  PYTHON_VERSION: '3.12'               # set this to the python version to use
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  PYTHON_VERSION: '3.12' # set this to the python version to use (supports 3.6, 3.7, 3.8)
 
 jobs:
   build:
@@ -31,25 +31,25 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv ./venv 
-          source ./venv/bin/activate
+          python -m venv venv
+          source venv/bin/activate
 
-      - name: Install dependencies (for local build/test steps)
-        working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
+      # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-        run: zip -r ../release.zip .
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: release.zip
+          path: |
+            release.zip
+            !venv/
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -61,7 +61,7 @@ jobs:
           name: python-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
+        run: unzip release.zip     
         
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
@@ -69,5 +69,7 @@ jobs:
         with:
           app-name: 'PHIL-4176'
           slot-name: 'Production'
-          package: '.'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_203720FAEF344890B402F90C3694CCBC }}
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E42C35231734C4391214F058CF53F4C }}
+          sku: 'flexconsumption'
+        
