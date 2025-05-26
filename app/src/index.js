@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const data = await response.json();
-            console.log('Response from Azure Function:', data);
+            console.log('Response from Azure Function:', data.reply);
             addMessage(JSON.stringify(data.reply) || "Error: No reply from bot.", 'bot');
 
         } catch (error) {
