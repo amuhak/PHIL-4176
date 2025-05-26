@@ -8,15 +8,8 @@ from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
-client = None
+
 model = "gemini-2.5-flash-preview-05-20"
-try:
-    client = genai.Client(
-        api_key=os.environ.get("GEMINI_API_KEY"),
-    )
-    logging.info(f"Google ai client validated")
-except Exception as e:
-    logging.error(f"Google ai client error: {e}")
 
 
 @app.route(route="req")
@@ -84,21 +77,23 @@ def req(req: func.HttpRequest) -> func.HttpResponse:
             ),
         ],
     )
-    global client
-    if client == None:
-        try:
-            client = genai.Client(
-                api_key=os.environ.get("GEMINI_API_KEY"),
-            )
-            logging.info(f"Google ai client validated")
-        except Exception as e:
-            logging.error(f"Google ai client error: {e}")
-            return func.HttpResponse(
-                "Google AI client initialization failed. Please check the API key.",
-                status_code=500,
-            )
+
+    client = None
     response = None
-    try: 
+
+    try:
+        client = genai.Client(
+            api_key=os.environ.get("GEMINI_API_KEY"),
+        )
+        logging.info(f"Google ai client validated")
+    except Exception as e:
+        logging.error(f"Google ai client error: {e}")
+        return func.HttpResponse(
+            "Google AI client initialization failed. Please check the API key.",
+            status_code=500,
+        )
+    
+    try:
         response = client.models.generate_content(
             model=model,
             contents=contents,
@@ -110,6 +105,7 @@ def req(req: func.HttpRequest) -> func.HttpResponse:
             "Failed to generate content. Please check the input and try again.",
             status_code=500,
         )
+    
     if not response or not response.text:
         logging.error("No content generated in the response.")
         return func.HttpResponse(
