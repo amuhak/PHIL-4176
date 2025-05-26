@@ -4,3 +4,5 @@
 
 azure-functions
 google-genai
+azure-identity 
+azure-keyvault

@@ -85,5 +85,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize with a bot message to be part of history from the start
-    addMessage("Hello! How can I help you today?", 'bot');
+    addMessage("Hello! How can I help you today? Start by entering your problem or question.", 'bot');
 });
