@@ -26,3 +26,19 @@ replay_pid*
 # Node 
 app/node_modules
 app/build/*
+
+# LaTeX build artifacts
+*.aux
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.bbl
