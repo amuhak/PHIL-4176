@@ -9,7 +9,11 @@ from azure.keyvault.secrets import SecretClient
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
-model = "gemini-2.5-flash-preview-05-20"
+models = [
+    "gemini-2.5-flash-preview-05-20",
+    "gemini-2.0-flash",
+    "gemma-3-27b-it",
+]
 
 
 @app.route(route="req")
@@ -108,19 +112,18 @@ Example of Guiding (User: "I'm stuck, just tell me what to do.")
             "Google AI client initialization failed. Please check the API key.",
             status_code=500,
         )
+    
+    for model in models:
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=contents,
+                config=generate_content_config,
+            )
+            break 
+        except Exception as e:
+            logging.error(f"Error generating content: {e}")
 
-    try:
-        response = client.models.generate_content(
-            model=model,
-            contents=contents,
-            config=generate_content_config,
-        )
-    except Exception as e:
-        logging.error(f"Error generating content: {e}")
-        return func.HttpResponse(
-            "Failed to generate content. Please check the input and try again.",
-            status_code=500,
-        )
 
     if not response or not response.text:
         logging.error("No content generated in the response.")
