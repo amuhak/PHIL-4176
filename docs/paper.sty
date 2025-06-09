@@ -13,8 +13,8 @@
 % Select monospaced font
 \usepackage{sourcecodepro}
 
-% Select URL font
-\usepackage[hyphens]{url}
+% Note: url package is loaded in main document before biblatex to avoid option clash
+% \usepackage[hyphens]{url}
 
 % ---- Select math fonts ----
 
@@ -230,51 +230,46 @@ Available at \url{#2}}}}
 
 % ---- Format bibliography ----
 
-% Enhance bibliography
-\usepackage{natbib}
-
-% Eliminate author-year separation in citations
-\setcitestyle{aysep={}}
-
-% Set font size in bibliography
-\renewcommand{\bibfont}{\small}
-
-% Set spacing between references
-\setlength{\bibsep}{0pt}
-
-% Set indentation of references
-\setlength{\bibhang}{\parindent}
+% Bibliography formatting for biblatex is handled in the main document
+% The following would be used for traditional BibTeX but are incompatible with biblatex:
+% \setcitestyle{aysep={}}  % This command doesn't exist in biblatex
+% \renewcommand{\bibfont}{\small}  % Use \renewcommand*{\bibfont}{\small} in biblatex setup
+% \setlength{\bibsep}{0pt}  % Use \setlength{\bibitemsep}{0pt} in biblatex setup
+% \setlength{\bibhang}{\parindent}  % Use \setlength{\bibhang}{\parindent} in biblatex setup
 
 % ---- Format appendix ----
 
-\AfterEndEnvironment{thebibliography}{
-%
-% Reset counters
-\setcounter{theorem}{0}
-\setcounter{proposition}{0} 
-\setcounter{lemma}{0}
-\setcounter{corollary}{0}
-\setcounter{definition}{0}
-\setcounter{assumption}{0}
-\setcounter{remark}{0}
-\setcounter{table}{0}
-\setcounter{figure}{0}
-\setcounter{equation}{0} 
+% Note: Using biblatex instead of thebibliography environment
+% For biblatex, appendix formatting should be handled differently
+\AfterEndPreamble{%
+% This will be executed after biblatex processes bibliography
+% Reset counters for appendix (if needed)
+% \setcounter{theorem}{0}
+% \setcounter{proposition}{0} 
+% \setcounter{lemma}{0}
+% \setcounter{corollary}{0}
+% \setcounter{definition}{0}
+% \setcounter{assumption}{0}
+% \setcounter{remark}{0}
+% \setcounter{table}{0}
+% \setcounter{figure}{0}
+% \setcounter{equation}{0} 
 %
 % Add "A" in front of labels
-\renewcommand{\thetheorem}{A\arabic{theorem}}
-\renewcommand{\theproposition}{A\arabic{proposition}}
-\renewcommand{\thelemma}{A\arabic{lemma}}
-\renewcommand{\thecorollary}{A\arabic{corollary}}
-\renewcommand{\thedefinition}{A\arabic{definition}}
-\renewcommand{\theassumption}{A\arabic{assumption}}
-\renewcommand{\theremark}{A\arabic{remark}}
-\renewcommand{\thetable}{A\arabic{table}}
-\renewcommand{\thefigure}{A\arabic{figure}}
-\renewcommand{\theequation}{A\arabic{equation}}
+% \renewcommand{\thetheorem}{A\arabic{theorem}}
+% \renewcommand{\theproposition}{A\arabic{proposition}}
+% \renewcommand{\thelemma}{A\arabic{lemma}}
+% \renewcommand{\thecorollary}{A\arabic{corollary}}
+% \renewcommand{\thedefinition}{A\arabic{definition}}
+% \renewcommand{\theassumption}{A\arabic{assumption}}
+% \renewcommand{\theremark}{A\arabic{remark}}
+% \renewcommand{\thetable}{A\arabic{table}}
+% \renewcommand{\thefigure}{A\arabic{figure}}
+% \renewcommand{\theequation}{A\arabic{equation}}
 %
 % Add "Appendix" in front of section label
-\titleformat{\section}{\centering\large\bfseries}{Appendix~\thesection.}{1em}{}}
+% \titleformat{\section}{\centering\large\bfseries}{Appendix~\thesection.}{1em}{}
+}
 
 % ---- Enable hyperlinks  ----
 

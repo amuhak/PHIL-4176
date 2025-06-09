@@ -1,13 +1,20 @@
 \documentclass[letterpaper,11pt,leqno]{article}
-\usepackage{paper,appendix}
 \usepackage{microtype}
-\bibliographystyle{bibliography}
+\usepackage[hyphens]{url}  % Load url package before biblatex to avoid option clash
+\usepackage[style=mla,backend=biber]{biblatex}
+\usepackage{paper,appendix}
+
+% Configure biblatex formatting
+\renewcommand*{\bibfont}{\small}
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibhang}{\parindent}
 
 % Enter paper title to populate PDF metadata:
 \hypersetup{pdftitle={Minimalist LaTeX Template for Academic Papers}}
 
 % Enter path to BibTeX file with references:
-\newcommand{\bib}{bibliography.bib}
+
+\addbibresource{bibliography.bib}
 
 \begin{document}
 
@@ -38,7 +45,7 @@ This is the abstract.
 % Enter main text:
 \section{Introduction}\label{s:introduction}
  
-During our final project brainstorming session for Environmental Ethics, we wanted a way to incorporate Generative AI in our final project because were were interested in it. The way we settled on was PhilosophyHelperAI, a handy tool that helps you think (not think for you).
+During our final project brainstorming session for Environmental Ethics, we wanted a way to incorporate Generative AI in our final project because were were interested in it. The way we settled on was PhilosophyHelperAI, a handy tool that helps you think (not think for you). \cite{GoogleAIDev}
 
 
 \section{Generic section}\label{s:section}
@@ -51,6 +58,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Nullam 
 
 \pagebreak
 
-\bibliography{\bib}
+\printbibliography
 
 \end{document}
