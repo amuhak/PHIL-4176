@@ -43,3 +43,4 @@ app/build/*
 *.snm
 *.bbl
 *.bcf
+docs/paper.run.xml
