@@ -42,3 +42,4 @@ app/build/*
 *.nav
 *.snm
 *.bbl
+*.bcf
