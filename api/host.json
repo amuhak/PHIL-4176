@@ -3,10 +3,10 @@
   "logging": {
     "fileLoggingMode": "always",
     "logLevel": {
-      "default": "Warning",
-      "Host.Aggregator": "Trace",
-      "Host.Results": "Trace",
-      "Function": "Trace"
+      "default": "Error",
+      "Host.Aggregator": "Error",
+      "Host.Results": "Error",
+      "Function": "Error"
     }
   },
   "extensionBundle": {
