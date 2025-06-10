@@ -3,6 +3,7 @@
 \usepackage[hyphens]{url}  % Load url package before biblatex to avoid option clash
 \usepackage[style=mla,backend=biber]{biblatex}
 \usepackage{paper,appendix}
+\usepackage{graphicx}
 
 % Configure biblatex formatting
 \renewcommand*{\bibfont}{\small}
@@ -48,9 +49,32 @@ This is the abstract.
 During our final project brainstorming session for Environmental Ethics, we wanted a way to incorporate Generative AI in our final project because were were interested in it. The way we settled on was PhilosophyHelperAI, a handy tool that helps you think (not think for you). \cite{GoogleAIDev}
 
 
-\section{Generic section}\label{s:section}
+\section{Methodology}\label{s:section}
 
-This is a section. This is the section introduction. Below are the subsections. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. \cite{PromptEngineering}
+The core Methodology of our project was human autonomy and dignity.
+This is the reason why we choose to have the agent only respond in questions rather than definite answers, to the users' dismay:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{docs/images/userresponse1.png}
+  \caption{This is an example of the agent only responding in questions in order to help force the user to ponder.}
+  \label{fig:sample}
+\end{figure}
+
+\cite{PromptEngineering}
+
+\section{Challenges}\label{s:section}
+
+One of the challenges we ran into was designing a prompt to the large-language-model that would allow for it to only respond in questions as well as not allowing for any extraneous types of output (code, markdown, emojis).
+
+Our final prompt can be seen here:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{docs/images/prompt.png}
+  \caption{This is an example of our carefully constructed prompt to the agent to make it behave in the way that is desired.}
+  \label{fig:sample}
+\end{figure}
 
 \subsection{Generic subsection}
 
