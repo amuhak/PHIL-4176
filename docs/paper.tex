@@ -26,7 +26,7 @@
 \author{Raghav Vikramprabhu, Amulya Jain
 %
 % Enter affiliations and acknowledgements:
-\thanks{Raghav Vikramprabhu: Georgia Institute of Technology. Amulya Jain: Georgia Institute of Technology. We thank Google for releasing their paper on how to properly prompt an AI.}}
+\thanks{Raghav Vikramprabhu: Georgia Institute of Technology. Amulya Jain: Georgia Institute of Technology. We thank Google for releasing their paper on how to properly prompt an LLM. (\cite{PromptEngineering}) }}
 
 % Enter date:
 \date{June 2025}   
@@ -46,7 +46,7 @@ This is the abstract.
 % Enter main text:
 \section{Introduction}\label{s:introduction}
  
-During our final project brainstorming session for Environmental Ethics, we wanted a way to incorporate Generative AI in our final project because were were interested in it. The way we settled on was PhilosophyHelperAI, a handy tool that helps you think (not think for you). \cite{GoogleAIDev}
+During our final project brainstorming session for Environmental Ethics, we wanted a way to incorporate Generative AI in our final project because were were interested in it. The way we settled on was PhilosophyHelperAI, a handy tool that helps you think (not think for you).
 
 
 \section{Methodology}\label{s:section}
@@ -65,7 +65,7 @@ This is the reason why we choose to have the agent only respond in questions rat
 
 \section{Challenges}\label{s:section}
 
-One of the challenges we ran into was designing a prompt to the large-language-model that would allow for it to only respond in questions as well as not allowing for any extraneous types of output (code, markdown, emojis).
+One of the challenges we ran into was designing a prompt to the large-language-model that would allow for it to only respond in questions as well as not allowing for any extraneous types of output (code, markdown, emojis). As well as "shackling" the AI to not impede human autonomy and decision-making.
 
 Our final prompt can be seen here:
 
@@ -75,6 +75,24 @@ Our final prompt can be seen here:
   \caption{This is an example of our carefully constructed prompt to the agent to make it behave in the way that is desired.}
   \label{fig:sample}
 \end{figure}
+
+\section{AI Ethics}\label{s:section}
+
+Our project forced us to consider aspects about generative AI that otherwise would not have been on the forefront of our minds. Generative Pre-Transformer AI isn't actually "thinking" in the human sense but rather "rephrasing" whatever data has been fed into it. This is how a lot of large language models such as ChatGPT work (GPT stands for Generative Pre-Transformer). This whole process raises a lot of questions about content ownership as well as takes a large amount of energy to sustain.
+
+Generative AI largely does not know "right" from "wrong" in a traditional sense so it will blindly take in the input data (academic papers, internet posts, without properly crediting it to the original author/researcher. This means that a large portion of content outputted by popular AI platforms like ChatGPT is considered plagiarism. 
+
+Plagiarism can be considered theft of intellectual property in a sense so that would mean Generative AI is stealing. The idea of theft has important ethical implications as well. If we were to look at theft by Generative AI in a Utilitarian sense, it does have certain benefits like democratizing otherwise esoteric knowledge that people would not go out of their way to consume (like medical journals). But it also has related drawbacks. One such of these being unknown if any of the responses it outputs is true or not which could have important implications on the medical, legal, and political sectors to name a few. 
+
+However, if we were to look at Generative AI under a Deontological sense of which we define stealing as bad, all Generative Pre Transformer based AI would falter to fill a sense of morality that Utilitairianism would otherwise provide. Since Deontology is based on hard and fast rules instead of benefits vs. costs, Generative AI would need to obey those rules instead of looking at its benefits vs. drawbacks which might have a chance to redeem its moral value. 
+
+AI as a whole also has a large energy cost. In a recent statement by OpenAI's CEO Sam Altman, he states that simply adding the word "please" to each query of ChatGPT increases their energy costs by 14 cents. For the worldwide environment, energy is a valuable commodity and one must wonder if its worth it for a resource-intensive function to be maintained, or in other words: provisioned. One way to look at this is with Utilitarianism. In this sense, we must look at the potential benefits and drawbacks of provisioning a LLM such as ChatGPT vs. growing crops. We would look at the oppurtunity cost of a certain project (like growing crops) as opposed to provisioning the resources needed to maintain an LLM. If a single word in a query, one of billions, is enough to raise costs by 14 cents, it may not be worth provisioning for LLMs as much as the broader public would like to believe. 
+
+Of course, new technological advancements in neural networks could end up replicating the human mind to a point where it would be in humans' best interest to provision for AI because it could help us solve problems on a superhuman scale because a machine doesn't need any of the physiological needs like a human.
+
+We would like to think that this Artificial General Intelligence wouldn't replace humans completely but being able to infinitely scale human intelligence to a virtual server rack with hundreds of instances might make humans obsolete. 
+
+However that type of technology will take a long time, to say the least. Humanity might not even get to that point because of the aforementioned energy limitations so its important to stay focused on the present usage and ethics of AI. 
 
 \subsection{Generic subsection}
 
