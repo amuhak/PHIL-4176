@@ -47,7 +47,6 @@
 
 \end{titlepage}
 
-
 % Enter main text:
 \section{Introduction}\label{s:introduction}
 
@@ -58,28 +57,27 @@ Our original concepts played with having the Large Language Model (LLM) pick a q
 \section{Methodology}
 The idea of our project was to create a tool that would guide the user through a Socratic method of questioning to help them navigate their dilemmas.
 
+\subsection{Why Questions?}
+The reason why we choose to have the agent only respond in questions rather than definite answers, to the users' dismay, is because we wanted to force the user to think about their dilemma rather than just giving them the answer. This is in line with the Socratic method of questioning. If the agent were to give the user a definite answer, it would be taking away the user's autonomy and decision making freedom.
+
+In the beginning, we were planning on having the agent pick a question from a predefined set of questions. However, during development, we tried to have the agent generate its own questions, and this ended up being a much better solution. Hence, we decided to go with the latter approach.
+
 \subsection{Technical Implementation}
 To do this, we created a web interface that would allow the user to have a conversation with the agent. All the code for which can be found on our GitHub repository: \link{https://github.com/amuhak/PHIL-4176/}{github.com/amuhak/PHIL-4176}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{images/workingExample.png}
-  \caption{This is an example of the agent only responding in questions in order to help force the user to ponder.}
+  \caption{An sample interaction with the agent. It only responds with questions in order to guide the user in their thinking.}
 \end{figure}
 
-In the \link{https://github.com/amuhak/PHIL-4176/blob/main/app}{/app} directory, you will find the code that creates the web interface. If is built using npm ans webpack. The code is written in JavaScript, HTML, and CSS. The web interface allows the user to input their dilemma and have a conversation with the agent.
+In the \link{https://github.com/amuhak/PHIL-4176/blob/main/app}{/app} directory, you will find the code that creates the web interface. The web interface built with JavaScript, HTML, and CSS, dependencies are managed by npm, and optimized with webpack. The web interface allows the user to input their dilemma and have a conversation with the AI agent.
 
 When the user inputs their dilemma, the web interface sends a request to the server. This request contains all the context of the conversation so far. So If this is the third question the user has asked, the request will also contain the first two questions. This is done to make sure that the LLM has all the context it needs to adequately respond to the user's question.
 
-The server itself is written in Python (located in the \link{https://github.com/amuhak/PHIL-4176/blob/main/api}{/api} directory). It uses Azure Functions to host the code that serves as the intermediary between the LLM API and the web interface. Azure Functions is a serverless compute platform that executes code in response to events without requiring manual provisioning or management of servers. This is the perfect solution for our project because we do not expect a lot of traffic, so we do not want to use compute resources that we do not need. 
+The server itself is written in Python (located in the \link{https://github.com/amuhak/PHIL-4176/blob/main/api}{/api} directory). It uses Azure Functions to host the code that serves as the intermediary between the LLM API and the web interface. Azure Functions is a serverless compute platform that executes code in response to events without requiring manual provisioning or management of servers. This serverless architecture is ideal for our project because we do not expect a lot of traffic, so we do not want to use compute resources that we do not need.
 
-The LLM itself is hosted by Google. We use Google's Gemini, specifically the Gemini 2.5 Flash model. We chose this model because it is a state-of-the-art LLM that is at the maxima of the price performance curve. Also, due to it being the flash model, it is fast, which is important because we do not want to break the user's thought process by having to wait for the LLM to respond.
-
-\subsection{Why Questions?}
-
-The reason why we choose to have the agent only respond in questions rather than definite answers, to the users' dismay, is because we wanted to force the user to think about their dilemma rather than just giving them the answer. This is in line with the Socratic method of questioning. If the agent were to give the user a definite answer, it would be taking away the user's autonomy and decision making freedom. 
-
-In the beginning, we were planning on having the agent pick a question from a predefined set of questions. However, during development, we tried to have the agent generate its own questions, and this ended up being a much better solution. Hence, we decided to go with the latter approach.
+The LLM itself is hosted by Google. We use Google's Gemini, specifically the Gemini 2.5 Flash model. We chose this model because it is a state-of-the-art LLM that is an excellent balance of performance, speed, and cost-efficiency (\cite{GeminiFlash}). Also, due to it being the flash model, it is fast, which is important because we do not want to break the user's thought process by having to wait for the LLM to respond.
 
 \section{Challenges}
 
@@ -87,7 +85,7 @@ One of the challenges we ran into was designing a prompt to the large-language-m
 
 Our final prompt can be seen here:
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{images/prompt.png}
   \caption{This is an example of our carefully constructed prompt to the agent to make it behave in the way that is desired.}

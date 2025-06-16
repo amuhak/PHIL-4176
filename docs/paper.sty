@@ -90,13 +90,19 @@
 
 % Define custom commands with complex argument specifications
 \usepackage{xparse}
+\usepackage{xstring}
 
 % Place URL and publication information at foot of title page
-\NewDocumentCommand{\available}{o g}{%
-\fancypagestyle{plain}{\fancyfoot[C]{\color{gray}\footnotesize%
-\IfValueT{#1}{Published in \emph{#1}\;\textbullet\;}%
-Available at \url{#2}}}}
-
+\NewDocumentCommand{\available}{o g}{
+  \fancypagestyle{plain}{
+    \fancyfoot[C]{\color{gray}\footnotesize
+      \IfValueT{#1}{Published in \emph{#1}\;\textbullet\;}
+      \StrSubstitute{#2}{https://}{}[\cleanURL]
+      \StrSubstitute{\cleanURL}{http://}{}[\cleanURL]
+      Available at \href{#2}{\cleanURL}
+    }
+  }
+}
 % ---- Format title page ----
 
 % Customize title, author, and date
