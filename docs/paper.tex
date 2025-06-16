@@ -4,6 +4,12 @@
 \usepackage[style=mla,backend=biber]{biblatex}
 \usepackage{paper,appendix}
 \usepackage{graphicx}
+\usepackage{indentfirst}
+
+% Custom Commands
+\newcommand{\link}[2]{
+  \underbar{\bf \href{#1}{#2}}
+}
 
 % Configure biblatex formatting
 \renewcommand*{\bibfont}{\small}
@@ -31,7 +37,7 @@
 \date{June 2025}
 
 % Enter permanent URL (can be commented out):
-% \available{https://github.com/pmichaillat/latex-paper}
+\available{https://github.com/amuhak/PHIL-4176/blob/main/docs/paper.pdf}
 
 \begin{titlepage}
   \maketitle
@@ -50,15 +56,30 @@ Our final project explores the intersection of Generative AI and Environmental E
 Our original concepts played with having the Large Language Model (LLM) pick a question from a predefined set. Ultimately, we settled on letting it create the response but strongly guiding it with a robust system prompt.
 
 \section{Methodology}
+The idea of our project was to create a tool that would guide the user through a Socratic method of questioning to help them navigate their dilemmas.
 
-The core Methodology of our project was human autonomy and dignity.
-This is the reason why we choose to have the agent only respond in questions rather than definite answers, to the users' dismay:
+\subsection{Technical Implementation}
+To do this, we created a web interface that would allow the user to have a conversation with the agent. All the code for which can be found on our GitHub repository: \link{https://github.com/amuhak/PHIL-4176/}{github.com/amuhak/PHIL-4176}
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\textwidth]{images/userresponse1.png}
+  \includegraphics[width=\textwidth]{images/workingExample.png}
   \caption{This is an example of the agent only responding in questions in order to help force the user to ponder.}
 \end{figure}
+
+In the \link{https://github.com/amuhak/PHIL-4176/blob/main/app}{/app} directory, you will find the code that creates the web interface. If is built using npm ans webpack. The code is written in JavaScript, HTML, and CSS. The web interface allows the user to input their dilemma and have a conversation with the agent.
+
+When the user inputs their dilemma, the web interface sends a request to the server. This request contains all the context of the conversation so far. So If this is the third question the user has asked, the request will also contain the first two questions. This is done to make sure that the LLM has all the context it needs to adequately respond to the user's question.
+
+The server itself is written in Python (located in the \link{https://github.com/amuhak/PHIL-4176/blob/main/api}{/api} directory). It uses Azure Functions to host the code that serves as the intermediary between the LLM API and the web interface. Azure Functions is a serverless compute platform that executes code in response to events without requiring manual provisioning or management of servers. This is the perfect solution for our project because we do not expect a lot of traffic, so we do not want to use compute resources that we do not need. 
+
+The LLM itself is hosted by Google. We use Google's Gemini, specifically the Gemini 2.5 Flash model. We chose this model because it is a state-of-the-art LLM that is at the maxima of the price performance curve. Also, due to it being the flash model, it is fast, which is important because we do not want to break the user's thought process by having to wait for the LLM to respond.
+
+\subsection{Why Questions?}
+
+The reason why we choose to have the agent only respond in questions rather than definite answers, to the users' dismay, is because we wanted to force the user to think about their dilemma rather than just giving them the answer. This is in line with the Socratic method of questioning. If the agent were to give the user a definite answer, it would be taking away the user's autonomy and decision making freedom. 
+
+In the beginning, we were planning on having the agent pick a question from a predefined set of questions. However, during development, we tried to have the agent generate its own questions, and this ended up being a much better solution. Hence, we decided to go with the latter approach.
 
 \section{Challenges}
 
@@ -89,10 +110,6 @@ Of course, new technological advancements in neural networks could end up replic
 We would like to think that this Artificial General Intelligence wouldn't replace humans completely but being able to infinitely scale human intelligence to a virtual server rack with hundreds of instances might make humans obsolete.
 
 However that type of technology will take a long time, to say the least. Humanity might not even get to that point because of the aforementioned energy limitations so its important to stay focused on the present usage and ethics of AI.
-
-\subsection{Generic subsection}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Nullam molestie, libero sit amet luctus vehicula, eros purus ultrices libero, eget fermentum leo sapien a metus. Duis porta massa vel justo posuere, nec placerat neque dictum. Morbi nec velit in turpis fermentum cursus nec ut leo. Integer vitae eros vehicula, fermentum turpis sed, fermentum elit. Suspendisse ac mauris at nisl ultricies commodo id nec justo.
 
 \pagebreak
 

@@ -44,3 +44,4 @@ app/build/*
 *.bbl
 *.bcf
 docs/paper.run.xml
+*.synctex
