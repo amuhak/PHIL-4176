@@ -11,7 +11,6 @@ basicstyle=\small\ttfamily,
 columns=flexible,
 breaklines=true
 }
-
 % Custom Commands
 \newcommand{\link}[2]{
   \underbar{\bf \href{#1}{#2}}
@@ -49,7 +48,7 @@ breaklines=true
   \maketitle
 
   % Enter abstract:
-  This is the abstract. Also add the link here: https://phil.amuhak.com/
+  In this report. The Methodology and Implementation of PhilosophyHelperAI(https://phil.amuhak.com/) is listed as well as general discussion on the Ethics of AI that was pondered during the creation of this term project. One of the main discussion points was over the opportunity cost of AI vs. other projects and the issues with plagiarism and hallucinations GPT suffers from. 
 
 \end{titlepage}
 
@@ -137,21 +136,17 @@ The final system prompt has worked well in guiding the LLM to generate the desir
 
 \section{AI Ethics}
 
-Our project forced us to consider aspects about generative AI that otherwise would not have been on the forefront of our minds. Generative Pre-Transformer AI isn't actually "thinking" in the human sense but rather "rephrasing" whatever data has been fed into it. This is how a lot of large language models such as ChatGPT work (GPT stands for Generative Pre-Transformer). This whole process raises a lot of questions about content ownership as well as takes a large amount of energy to sustain.
+Our project forced us to consider aspects about generative AI that otherwise would not have been on the forefront of our minds. There are many types of Artificial Intelligence (AI) but one of the most most popular today is Generative Pre-Transformer AI (GPT). GPT isn't actually "thinking" in the human sense but rather "rephrasing" whatever data has been fed into it. This is how a lot of large language models such as ChatGPT work. This whole process raises a lot of questions about content ownership as well as questions about effective energy usage.
 
-Generative AI largely does not know "right" from "wrong" in a traditional sense so it will blindly take in the input data (academic papers, internet posts, without properly crediting it to the original author/researcher. This means that a large portion of content outputted by popular AI platforms like ChatGPT is considered plagiarism.
+Generative AI largely does not know "right" from "wrong" in a traditional sense so it will blindly take in the input data (academic papers, forum posts, news articles) without properly crediting it to the original author/researcher. This means that a large portion of content outputted by popular AI platforms like ChatGPT is considered plagiarism.
 
 Plagiarism can be considered theft of intellectual property in a sense so that would mean Generative AI is stealing. The idea of theft has important ethical implications as well. If we were to look at theft by Generative AI in a Utilitarian sense, it does have certain benefits like democratizing otherwise esoteric knowledge that people would not go out of their way to consume (like medical journals). But it also has related drawbacks. One such of these being unknown if any of the responses it outputs is true or not which could have important implications on the medical, legal, and political sectors to name a few.
 
-However, if we were to look at Generative AI under a Deontological sense of which we define stealing as bad, all Generative Pre Transformer based AI would falter to fill a sense of morality that Utilitairianism would otherwise provide. Since Deontology is based on hard and fast rules instead of benefits vs. costs, Generative AI would need to obey those rules instead of looking at its benefits vs. drawbacks which might have a chance to redeem its moral value.
+However, if we were to look at Generative AI under a Deontological sense of which we define stealing as bad, all Generative Pre Transformer based AI would falter to fill a sense of morality that Utilitairianism would otherwise provide. Since Deontology is based on hard and fast rules instead of benefits vs. costs, Generative AI would need to obey those rules instead of looking at its benefits vs. drawbacks as a whole which might have a chance to redeem its moral value.
 
-AI as a whole also has a large energy cost. In a recent statement by OpenAI's CEO Sam Altman, he states that simply adding the word "please" to each query of ChatGPT increases their energy costs by 14 cents. For the worldwide environment, energy is a valuable commodity and one must wonder if its worth it for a resource-intensive function to be maintained, or in other words: provisioned. One way to look at this is with Utilitarianism. In this sense, we must look at the potential benefits and drawbacks of provisioning a LLM such as ChatGPT vs. growing crops. We would look at the oppurtunity cost of a certain project (like growing crops) as opposed to provisioning the resources needed to maintain an LLM. If a single word in a query, one of billions, is enough to raise costs by 14 cents, it may not be worth provisioning for LLMs as much as the broader public would like to believe.
+Ignoring all the potential plagiarism issues, Generative AI also has chances to completely make up misinformation to output a response. This is a somewhat common phenomenon and it is known as "hallucinating". GPT Hallucinations can create absolutely incorrect information which can defeat the purpose of AI because it was created to mimic human intelligence.
 
-Of course, new technological advancements in neural networks could end up replicating the human mind to a point where it would be in humans' best interest to provision for AI because it could help us solve problems on a superhuman scale because a machine doesn't need any of the physiological needs like a human.
-
-We would like to think that this Artificial General Intelligence wouldn't replace humans completely but being able to infinitely scale human intelligence to a virtual server rack with hundreds of instances might make humans obsolete.
-
-However that type of technology will take a long time, to say the least. Humanity might not even get to that point because of the aforementioned energy limitations so its important to stay focused on the present usage and ethics of AI.
+AI as a whole also has a large energy cost. In a recent statement by OpenAI's CEO Sam Altman, he states that simply adding the word "please" to each query of ChatGPT increases their energy costs by 14 cents (\cite{AltmanTweet}). For the worldwide environment, energy is a valuable commodity and one must wonder if its worth it for a resource-intensive function to be maintained, or in other words: provisioned. One way to look at this is with Utilitarianism. In this sense, we must look at the potential benefits and drawbacks of provisioning a LLM such as ChatGPT vs. another important project. We would look at the opportunity cost of this project (like growing crops) as opposed to provisioning the resources needed to maintain an LLM. If a single word in a query, one query of billions in a day, is enough to raise costs by 14 cents per query, it may not be worth provisioning for LLMs as much as the broader public would like to believe.
 
 \pagebreak
 
