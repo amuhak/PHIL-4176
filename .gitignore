@@ -45,3 +45,5 @@ app/build/*
 *.bcf
 docs/paper.run.xml
 *.synctex
+docs/paper.bbl-SAVE-ERROR
+docs/paper.bcf-SAVE-ERROR
