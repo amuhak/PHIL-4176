@@ -48,7 +48,7 @@ breaklines=true
   \maketitle
 
   % Enter abstract:
-  In this report. The Methodology and Implementation of PhilosophyHelperAI(https://phil.amuhak.com/) is listed as well as general discussion on the Ethics of AI that was pondered during the creation of this term project. One of the main discussion points was over the opportunity cost of AI vs. other projects and the issues with plagiarism and hallucinations GPT suffers from. 
+  The Methodology and Implementation of PhilosophyHelperAI (\link{https://phil.amuhak.com/}{phil.amuhak.com}) as well as general discussion on AI Ethics including the opportunity cost of AI by weighing it against other projects and the issues with plagiarism and hallucinations GPT suffers from. 
 
 \end{titlepage}
 
@@ -63,9 +63,9 @@ Our original concepts played around with having the Large Language Model (LLM) p
 The idea of our project was to create a tool that would guide the user through a Socratic method of questioning to help them navigate their dilemmas.
 
 \subsection{Why Questions?}
-The reason why we choose to have the agent only respond in questions rather than definite answers, perhaps to the user's dismay, is because we wanted to force the user to think about their dilemma rather than just giving them the answer. This is in line with the Socratic method of questioning. If the agent were to give the user a definite answer, it would be taking away the user's autonomy and decision making freedom.
+Perhaps to the user's dismay, the agent will only respond in questions rather than definite answers. We chose to create it this way to force the user into contemplating the dilemma at hand rather than simply serving it to them on a silver platter. This is in line with the Socratic method. If the agent provides all answers in its own lens, it would detract from the user's autonomy and decision making freedom as it may influence their thoughts and opinions.
 
-In the beginning, we were planning on having the agent pick a question from a predefined set of questions. However, during development, we tried to have the agent generate its own questions, and this ended up being a much better solution. Hence, we decided to go with the latter approach.
+Initially, we planned on having the agent pick a question from a pre-defined set of questions. However, during development, we tried to have the agent generate its own questions, and this ended up being a much better solution. Hence, we decided to go with the latter approach.
 
 \subsection{Technical Implementation}
 To do this, we created a web interface that would allow the user to have a conversation with the agent. All the code for which can be found on our GitHub repository: \link{https://github.com/amuhak/PHIL-4176/}{github.com/amuhak/PHIL-4176}
@@ -78,9 +78,9 @@ To do this, we created a web interface that would allow the user to have a conve
 
 In the \link{https://github.com/amuhak/PHIL-4176/blob/main/app}{/app} directory, you will find the code that creates the web interface. The web interface built with JavaScript, HTML, and CSS, dependencies are managed by npm, and optimized with webpack. The web interface allows the user to input their dilemma and have a conversation with the AI agent.
 
-When the user inputs their dilemma, the web interface sends a request to the server. This request contains all the context of the conversation so far. So If this is the third question the user has asked, the request will also contain the first two questions. This is done to make sure that the LLM has all the context it needs to adequately respond to the user's question.
+When the user inputs their dilemma, the web interface sends a request to the server. This request contains all the context of the conversation so far. So, if this is the third question the user has asked, the request will also contain the first two questions. This is done to make sure that the LLM has all the context it needs to adequately respond to the user's question.
 
-The server itself is written in Python (located in the \link{https://github.com/amuhak/PHIL-4176/blob/main/api}{/api} directory). It uses Azure Functions to host the code that serves as the intermediary between the LLM API and the web interface. Azure Functions is a serverless compute platform that executes code in response to events without requiring manual provisioning or management of servers. This serverless architecture is ideal for our project because we do not expect a lot of traffic, so we do not want to use compute resources that we do not need.
+The server (located in the \link{https://github.com/amuhak/PHIL-4176/blob/main/api}{/api} directory) is written in Python. It uses Azure Functions to host the code that serves as the intermediary between the LLM API and the web interface. Azure Functions is a serverless compute platform that executes code in response to events without requiring manual provisioning or management of servers. This serverless architecture is ideal for our project because we do not expect a lot of traffic, so we do not want to waste compute resources that we do not need.
 
 The LLM itself is hosted by Google. We use Google's Gemini, specifically the Gemini 2.5 Flash model. We chose this model because it is a state-of-the-art LLM that is an excellent balance of performance, speed, and cost-efficiency (\cite{GeminiFlash}). Also, due to it being the flash model, it is fast, which is important because we do not want to break the user's thought process by having to wait for the LLM to respond.
 
@@ -97,14 +97,14 @@ We found three main obstacles that we needed to work around through careful prom
 
   \item \textbf{Extraneous Output: } We observed that the model was prone to generating extraneous output, like Markdown formatting, code snippets, and emojis. While this can be helpful in normal conversation, it detracts from the serious nature of the philosophical discussion and hence has to be prompted against.
 
-  \item \textbf{Preserving User Autonomy: } Even after prompting the LLM to only ask questions, it tended to guide the user towards certain answers by adding unnecessary information in the form of explanations or examples in the question. Not only did this make the replies longer and less readable, but introduce bias into the responses there by stripping the user of some of their autonomy. To combat this, we imposed strict constraints to ensure the agent remained neutral and acted as a facilitator of the user's own thought process, thereby protecting their autonomy.
+  \item \textbf{Preserving User Autonomy: } Even after prompting the LLM to only ask questions, it tended to guide the user towards certain answers by adding unnecessary information in the form of explanations or examples in the question. Not only did this make the replies longer and less readable, but introduce bias into the responses, thereby stripping the user of some of their autonomy. To combat this, we imposed strict constraints to ensure the agent remained neutral and acted as a facilitator of the user's own thought process.
 \end{enumerate}
 
 \subsection{Prompting Insight}
 
-Google released a white paper on how to prompt their LLMs effectively (\cite{PromptEngineering}). In this paper, they outline many techniques and strategies for effective prompting. Putting it simply, they suggest being clear, precise, and to not assume anything. 
+Google released a white paper on how to prompt their LLMs effectively (\cite{PromptEngineering}). In this paper, they outline many techniques and strategies for effective prompting. Put simply, they suggest being clear, precise, and to not assume anything. 
 
-We found that giving the LLM an example of what we want it to do is very helpful. This is because it gives the LLM a clear idea of what we expect from it. We decided to tell it not to reveal itself as 'AI' because we thought this would detract from the thinking process. Also, the more in character the conversation is, the more likely a probability model (like the GPT-based LLM of today) will be to produce text that aligns with the conversation. All of this together creates a more natural environment for the user to think in.
+We found that giving the LLM an example of what we want it to do is very helpful. This is because it gives the LLM a clear idea of what we expect from it. We decided to tell it not to reveal itself as 'AI' because we thought this would detract from the thinking process. Also, the more in-character the conversation is, the more likely a probability model (like the GPT-based LLM of today) will be to produce text that aligns with the conversation. All of this together creates a more natural environment for the user to think in.
 
 \subsection{The Final System Prompt}
 
